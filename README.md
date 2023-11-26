@@ -1,6 +1,7 @@
 # Make PL-15 Great Again!
 
-## What is this?
+#### [EN](README.md) | [PT_BR](README_BR.md)
+## What is this? 
 
 This is a mod for [SPT-AKI](https://www.sp-tarkov.com "The project's main goal is to provide a separate offline singleplayer experience with progression out-of-the-box for BSG's official client. You can now play Escape From Tarkov while you're waiting for their servers to get back online, while you're disconnected from the internet or if you need to take a break from the cheaters.") that makes the PL-15 great again!
 
