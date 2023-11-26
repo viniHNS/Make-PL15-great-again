@@ -23,7 +23,3 @@ Basta colocar a pasta `user` no diretório de instalação do seu jogo `SPT`.
 ## Licença
 
 Este mod está licenciado sob a [Licença MIT](LICENSE).
-
-
-
-
