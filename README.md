@@ -8,7 +8,7 @@ This is a mod for [SPT-AKI](https://www.sp-tarkov.com "The project's main goal i
 
 The PL-15 is a great weapon, but it has some flaws. This mod aims to fix them, like:
 
-- Add some sights, like the glock's ones. 
+- Now you can use glock sights and some sight mounts
 ###### Because according to wikipedia: "The PL-15{...} features removable front and rear dovetail sight posts, completely interchangeable with sights designed for Glock pistols."
 - Change the deviation (MOA) of the weapon
 
