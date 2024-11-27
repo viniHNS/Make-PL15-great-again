@@ -11,7 +11,7 @@ class Mod implements IPostDBLoadMod, IPreSptLoadMod
     {
         // get the logger from the server container
         const logger = container.resolve<ILogger>("WinstonLogger");
-        logger.logWithColor("Making the PL-15 great again!", LogTextColor.GREEN);
+        logger.logWithColor("[ViniHNS]Making the PL-15 great again!", LogTextColor.GREEN);
     }
 
     public postDBLoad(container: DependencyContainer): void 
