@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AssemblyName>makepl15greatagain</AssemblyName>
+    <RootNamespace>MakePL15GreatAgain</RootNamespace>
+    <Version>1.5.0</Version>
+    <Authors>viniHNS</Authors>
+    <Company>viniHNS</Company>
+    <Product>Make-PL15-Great-Again</Product>
+    <Description>Makes the PL-15 great again: Glock sights and sight mounts on the slide and lower deviation (MOA).</Description>
+    <Copyright>Copyright © viniHNS</Copyright>
+    <RepositoryUrl>https://github.com/viniHNS/Make-PL15-great-again</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SPTushonka.Common" Version="4.1.6" />
+    <PackageReference Include="SPTushonka.DI" Version="4.1.6" />
+    <PackageReference Include="SPTushonka.Server.Core" Version="4.1.6" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <SptModsDir>D:\Jogos\SPT4.1\SPT_Runtime\user\mods</SptModsDir>
+  </PropertyGroup>
+
+  <!-- Deploy to the local SPT install for testing. -->
+  <Target Name="DeployToSpt" AfterTargets="Build" Condition="Exists('$(SptModsDir)')">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(SptModsDir)\$(AssemblyName)" />
+    <Message Text="--- Deployed server mod to $(SptModsDir)\$(AssemblyName) ---" Importance="high" />
+  </Target>
+
+  <!-- Server-only mod: the zip contains SPT_Runtime\user\mods\<mod>\ and is extracted into the SPT root. -->
+  <Target Name="PackageModForDistribution" AfterTargets="Build">
+    <PropertyGroup>
+      <ModName>$(AssemblyName)</ModName>
+      <ZipFileName>$(ModName).zip</ZipFileName>
+      <TempPackageDir>$(ProjectDir)obj\Package</TempPackageDir>
+      <ModPackageDir>$(TempPackageDir)\SPT_Runtime\user\mods\$(ModName)</ModPackageDir>
+    </PropertyGroup>
+    <Message Text="--- Starting Mod packaging for distribution ---" Importance="high" />
+    <RemoveDir Directories="$(TempPackageDir)" />
+    <MakeDir Directories="$(ModPackageDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModPackageDir)" />
+    <ZipDirectory SourceDirectory="$(TempPackageDir)" DestinationFile="$(ProjectDir)..\$(ZipFileName)" Overwrite="true" />
+    <RemoveDir Directories="$(TempPackageDir)" />
+    <Message Text="--- Mod successfully packaged at: $(ProjectDir)..\$(ZipFileName) ---" Importance="high" />
+  </Target>
+</Project>

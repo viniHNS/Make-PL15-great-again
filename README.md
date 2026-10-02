@@ -1,25 +1,97 @@
+<div align="center">
+
 # Make PL-15 Great Again!
 
-#### [EN](README.md) | [PT_BR](README_BR.md)
-## What is this? 
+A server mod for SPT 4.1.6 that lets the PL-15 use Glock sights and a few sight mounts, and tightens its accuracy.
 
-This is a mod for [SPT-AKI](https://www.sp-tarkov.com "The project's main goal is to provide a separate offline singleplayer experience with progression out-of-the-box for BSG's official client. You can now play Escape From Tarkov while you're waiting for their servers to get back online, while you're disconnected from the internet or if you need to take a break from the cheaters.") that makes the PL-15 great again!
+![Version](https://img.shields.io/badge/version-1.5.0-orange?style=flat)
+![SPT](https://img.shields.io/badge/SPT-4.1.6-blue?style=flat)
+![.NET](https://img.shields.io/badge/.NET-10-512BD4?style=flat&logo=dotnet)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat)
 
-## What this mod does?
+[Features](#features) · [Install](#install) · [Sights](#sights) · [Build](#build-from-source)
 
-The PL-15 is a great weapon, but it has some flaws. This mod aims to fix them, like:
+**English** · [Português](README_BR.md)
 
-- Now you can use glock sights and some sight mounts
-###### Because according to wikipedia: "The PL-15{...} features removable front and rear dovetail sight posts, completely interchangeable with sights designed for Glock pistols."
-- Change the deviation (MOA) of the weapon
+</div>
 
-## Installation
+---
 
-1.  Download the `makepl15greatagain.zip`.
-2.  Drag and drop the `.zip` file directly into the root folder of your SPT installation.
-3.  Right-click the `.zip` file and select **"Extract Here"**.
-4.  The folders should merge automatically. If you get a prompt to overwrite files, say yes.
+## Features
 
-## License
+| Change | Game | Mod |
+|---|---|---|
+| Rear sight slot (slide) | PL-15 sights | + 5 Glock rear sights and 3 sight mounts |
+| Front sight slot (slide) | PL-15 sights | + 5 Glock front sights |
+| Max deviation | 11 | 9 |
 
-This mod is licensed under the [MIT License](LICENSE).
+> Why Glock sights? The real PL-15 has removable dovetail front and rear sights that are fully interchangeable with sights made for Glock pistols.
+
+---
+
+## Install
+
+Extract `makepl15greatagain.zip` into your SPT game folder:
+
+```
+<game folder>/
+└── SPT_Runtime/user/mods/makepl15greatagain/
+    └── makepl15greatagain.dll
+```
+
+Server only, no client plugin needed.
+
+---
+
+## Sights
+
+| Slot | Item |
+|---|---|
+| Rear | Glock rear sight |
+| Rear | Glock 19X rear sight |
+| Rear | Glock TruGlo TFX rear sight |
+| Rear | Glock ZEV Tech rear sight |
+| Rear | Glock Dead Ringer Snake Eye rear sight |
+| Rear | P226 Sight Mount 220-239 rear sight bearing |
+| Rear | M9A3 Sight Mount rear sight rail |
+| Rear | HK USP Red Dot sight mount |
+| Front | Glock front sight |
+| Front | Glock 19X front sight |
+| Front | Glock TruGlo TFX front sight |
+| Front | Glock ZEV Tech front sight |
+| Front | Glock Dead Ringer Snake Eye front sight |
+
+---
+
+## Build from Source
+
+**Requirements:** .NET 10 SDK.
+
+```sh
+dotnet build makepl15greatagain.sln -c Release
+```
+
+The build creates `makepl15greatagain.zip` in the solution folder.
+
+> The `.csproj` copies the build output into `D:\Jogos\SPT4.1` for testing when that folder exists. Change `SptModsDir` to your own SPT folder. Close the SPT server before building, or the copy fails because the DLL is in use.
+
+### Project Structure
+
+```
+Make-PL15-great-again/
+├── makepl15greatagain.sln
+└── Server/                         .NET 10 server mod
+    ├── Mod.cs                      mod metadata
+    └── PL15Changes.cs              sight slots and deviation changes
+```
+
+---
+
+## Resources
+
+| Resource | URL |
+|---|---|
+| SPT Server C# | https://github.com/SP-Tushonka/server-csharp |
+| Server Mod Examples | https://github.com/SP-Tushonka/server-mod-examples |
+| SPT Wiki — Modding Resources | https://wiki.sp-tushonka.com/en/modding/Modding_Resources |
+| SPT Scaffold | https://github.com/viniHNS/spt-scaffold |
